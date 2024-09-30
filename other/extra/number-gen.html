@@ -3,11 +3,12 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Set Domain Info | Illuminate</title>
+        <title>Random Number Generator | Illuminate</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link id="theme-link" rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/extra.css">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3317735030374126" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -29,14 +30,29 @@
                         <li><a href="../../about-blank">about:blank</a></li>
                     </ul>
                 </nav>
-                <h1>Setting a game domain</h1>
+                <h1>Random Number Generator</h1>
+                <p>Generates a random number from the minimum to maximum.</p>
             </header>
             <br />
-            <p>Choosing a domain in the selection menu, or setting a custom one, lets you access the games through a different domain. If your games show a blank page, or a blocked page, it is recommended to change your game domain to an unblocked one. Remember that changing your game domain will reset all of your game data until you change it back or load one of your save files. If you want to use a Custom Domain, you can fork the <a href="../../redirect.html?url=https://github.com/xlluminate/assets&type=external">Assets Repo</a> and host it, then enter your domain (When entering your domain, make sure it is only the domain you're entering, not including https:// or anything else | etc. myassetsfile.vercel.app). </p>
-            <p>You cannot host the assets repository using Github Pages as the build and deploy will most likely fail. Just a note that deploy time is more than 5 minutes in most web hosts, and some may take as long as 15 minutes to deploy. If you will be deploying, you will be deploying yourself, as we will not help you in deploying the assets repository.</p>
-            <div class="spacer"></div><div class="spacer"></div>
+            <div>
+                <label for="min">Minimum:</label><br />
+                <input type="number" id="min" value="0" /><br />
+                <label for="max">Maximum:</label><br />
+                <input type="number" id="max" value="10" /><br />
+            </div>
+            <button onclick="generate()">Generate</button>
+            <p id="number" style="font-weight: bold; font-size: 200%"></p>
         </div>
+        <div class="spacer"></div><div class="spacer"></div>
         <div class="footer"><a href="/">Back to Homepage</a></div>
+        <script>
+            function generate() {
+                var min = document.getElementById('min').value;
+                var max = document.getElementById('max').value;
+                var number = Math.round(max - ((Math.random()) * (max - min)));
+                document.getElementById('number').innerHTML = number;
+            }
+        </script>
         <script src="/js/main.js"></script>
     </body>
 </html>
